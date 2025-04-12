@@ -1,8 +1,11 @@
+import type { PublicUser } from "../user/types";
+
 export type ActionResponse = {
 	success: boolean;
 	message: string;
 	errors?: Record<string, string[]>;
 	error?: string;
+	user: PublicUser | null;
 };
 
 export type DbUser = {

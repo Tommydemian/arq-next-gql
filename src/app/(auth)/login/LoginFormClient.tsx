@@ -1,6 +1,7 @@
 "use client";
 import { useActionState, useEffect, useRef } from "react";
 import { login } from "@/features/auth/login-action";
+import { useUserStore } from "@/features/user/useUserStore";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -9,6 +10,7 @@ import { usePasswordVisibility } from "@/features/auth/usePasswordVisibility";
 import { EyeIcon } from "lucide-react";
 
 import type { ActionResponse } from "@/types/auth";
+import type { PublicUser } from "@/features/user/types";
 
 const initialState: ActionResponse = {
 	success: false,
@@ -17,6 +19,7 @@ const initialState: ActionResponse = {
 };
 export const LoginFormClient = () => {
 	const { handleChange, isVisible } = usePasswordVisibility();
+	const setUser = useUserStore((d) => d.setUser);
 	const formRef = useRef<HTMLFormElement>(null);
 	const router = useRouter();
 	const [state, formAction, isPending] = useActionState<
@@ -27,6 +30,7 @@ export const LoginFormClient = () => {
 			const result = await login(formData);
 
 			if (result.success) {
+				setUser(result.user as PublicUser);
 				toast.success("Sign in correctly");
 				router.push("/dashboard");
 			}

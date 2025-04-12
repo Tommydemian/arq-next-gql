@@ -6,6 +6,8 @@ import type { ActionResponse } from "./types";
 import { LoginSchema, type LoginInput } from "./zod-schema";
 
 export async function login(formData: FormData): Promise<ActionResponse> {
+	// const setUser = useUserStore((u) => u.setUser);
+
 	try {
 		const input: LoginInput = {
 			email: formData.get("email") as string,
@@ -19,6 +21,7 @@ export async function login(formData: FormData): Promise<ActionResponse> {
 				success: false,
 				message: "Validation failed",
 				errors: validationResult.error.flatten().fieldErrors,
+				user: null,
 			};
 		}
 
@@ -31,6 +34,7 @@ export async function login(formData: FormData): Promise<ActionResponse> {
 				errors: {
 					email: ["Invalid email or password"],
 				},
+				user: null,
 			};
 		}
 
@@ -47,12 +51,14 @@ export async function login(formData: FormData): Promise<ActionResponse> {
 		return {
 			success: true,
 			message: "Logged in successfully",
+			user: auth.user,
 		};
 	} catch (error) {
 		console.error(error);
 		return {
 			success: false,
 			message: "Something bad happened",
+			user: null,
 		};
 	}
 }
