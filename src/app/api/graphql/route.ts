@@ -10,6 +10,12 @@ const server = new ApolloServer({
 	resolvers,
 });
 
-const handler = startServerAndCreateNextHandler<NextRequest>(server);
-
+const handler = startServerAndCreateNextHandler<NextRequest>(server, {
+	context: async (req) => {
+		const user = getUserFromRequest(req);
+		return { user };
+	},
+});
 export { handler as GET, handler as POST };
+
+import { getUserFromRequest } from "@/auth/session";

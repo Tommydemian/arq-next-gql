@@ -2,14 +2,15 @@
 import { useFormAction } from "@/app/hooks/useFormAction";
 import Link from "next/link";
 import { RegistrationForm } from "@/components/RegistrationForm";
-import { signup } from "@/app/(auth)/actions/auth";
+
+// import { signup } from "@/app/(auth)/actions/auth";
 
 export default function SignUpPage() {
-	const { formAction, isPending, state, formRef } = useFormAction({
-		actionCallback: signup,
-		onSuccessPushDirection: "/dashboard",
-		successMessage: "User created!",
-	});
+	// const { formAction, isPending, state, formRef } = useFormAction({
+	// 	actionCallback: signup,
+	// 	onSuccessPushDirection: "/dashboard",
+	// 	successMessage: "User created!",
+	// });
 
 	return (
 		<div className="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8 bg-gray-50 dark:bg-[#121212]">
@@ -22,12 +23,12 @@ export default function SignUpPage() {
 				</h2>
 
 				<div className="max-w-xl mx-auto">
-					<RegistrationForm
+					{/* <RegistrationForm
 						isPending={isPending}
 						state={state}
 						action={formAction}
 						formRef={formRef}
-					/>
+					/> */}
 				</div>
 			</div>
 

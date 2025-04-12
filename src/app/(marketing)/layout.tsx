@@ -38,7 +38,7 @@ export default async function MarketingLayout({
 					</div>
 					<div className="flex items-center gap-4">
 						<div className="flex items-center space-x-4">
-							<Link href="/signin">
+							<Link href="/login">
 								<Button variant="outline">Sign in</Button>
 							</Link>
 							<Link href="/signup">

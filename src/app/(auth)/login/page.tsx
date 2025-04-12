@@ -1,3 +1,4 @@
+import { LoginFormClient } from "./LoginFormClient";
 import Link from "next/link";
 
 export default function SignInPage() {
@@ -10,6 +11,9 @@ export default function SignInPage() {
 				<h2 className="mt-2 text-center text-2xl font-bold text-gray-900 dark:text-white">
 					Sign in to your account
 				</h2>
+				<div className="max-w-xl mx-auto">
+					<LoginFormClient />
+				</div>
 			</div>
 
 			<div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
