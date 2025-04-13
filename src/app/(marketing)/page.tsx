@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Timestamp } from "../components/Timestamp";
-import Button from "../components/ui/Button";
+import { Button } from "@/components/ui/button";
 
 export default async function LandingPage() {
 	return (
